@@ -12,3 +12,6 @@ pipeline {
                 echo 'Hi world'
             }
         }
+    }
+
+}

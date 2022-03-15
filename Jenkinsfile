@@ -73,17 +73,19 @@
 
 pipeline {
 agent any
-tools {
+tools
+{
 maven 'maven'
 }
-stages {
-stage('maven') {
-steps {
-sh 'mvn --version'}
+stages
+{
+stage('maven')
+{
+steps
+{
+sh 'mvn --version'
 }
-
 }
-
 }
-
+}
 }

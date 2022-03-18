@@ -87,12 +87,12 @@
 pipeline {
     agent any
     parameters {
-        choice(name: 'ENV', choices: ['DEV', 'PROD', description: 'choose ENV'])
+        choice(name: 'ENV', choices: [ 'DEV', 'PROD', description: 'choose ENV' ])
         }
     stages {
         stage('DEV') {
         when {
-        environment name: 'ENV', value:'DEV'
+        environment name: 'ENV', value: 'DEV'
         }
             steps {
                 echo "DEV"
@@ -100,7 +100,7 @@ pipeline {
         }
         stage('PROD') {
             when {
-                environment name: 'PROD', value:'PROD'
+                environment name: 'PROD', value: 'PROD'
             }
             steps {
                 echo "PROD"

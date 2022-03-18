@@ -87,7 +87,7 @@
 pipeline {
     agent any
     parameters {
-    choice(name: 'ENV',choices: ['DEV', 'PROD', description: 'choose ENV'])}
+    choice(name: 'ENV', choices: ['DEV', 'PROD', description: 'choose ENV'])}
     stages {
         stage('DEV') {
         when {

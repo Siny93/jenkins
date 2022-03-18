@@ -100,7 +100,7 @@ pipeline {
         }
         stage('PROD') {
             when {
-                environment name: 'PROD', value: 'PROD'
+                environment name: 'ENV', value: 'PROD'
             }
             steps {
                 echo "PROD"

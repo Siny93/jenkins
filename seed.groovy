@@ -51,7 +51,7 @@ folder('CI-Pipelines') {
 
 
 
-def COMPONENTS:Arraylist = ["cart", "catalogue", "payment", "shipping", "user", "dispatch"]
+def COMPONENTS= ["cart", "catalogue", "payment", "shipping", "user", "dispatch"]
 def SIZE = COMPONENTS.size -1
 for(i in 0..SIZE) {
   def j = COMPONENTS[i]

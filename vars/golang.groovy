@@ -11,11 +11,6 @@ def call() {
         }
 
         stages {
-            stage('compile the code') {
-                steps {
-                    sh 'echo compile the ${COMPONENT} code'
-                }
-            }
 
             stage('check the code quality') {
                 steps {

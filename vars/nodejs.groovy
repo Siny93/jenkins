@@ -23,13 +23,19 @@ def call() {
 
             stage('lint checks') {
                 steps {
-                    sh '/home/centos/node_modules/eslint/bin/eslint.js .'
+                    sh 'echo lint cases'
                 }
             }
 
             stage('test cases') {
                 steps {
                     sh 'echo test cases'
+                }
+            }
+
+            stage('publish artifacts') {
+                steps {
+                    sh 'echo publish artifacts'
                 }
             }
 

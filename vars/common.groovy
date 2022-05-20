@@ -4,3 +4,12 @@ def sonarQube() {
     println 'sonarqube testing'
 
 }
+
+def publishArtifacts() {
+    if(env.GIT_BRANCH == "*tag*") {
+        println 'ran on tag'
+    } else {
+        Utils.markStageSkippedForConditional('publish Artifacts')
+    }
+
+}

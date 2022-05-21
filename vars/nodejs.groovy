@@ -12,6 +12,17 @@ def call() {
 
         stages {
 
+            stage('label builds') {
+                steps {
+                    script {
+                        addShortText background: 'white', borderColor: 'white', color: 'red', link: '', text: 'DEMO'
+                    }
+                }
+            }
+
+
+
+
 
             stage('check the code quality') {
                 steps {

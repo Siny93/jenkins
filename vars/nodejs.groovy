@@ -7,7 +7,7 @@ def call() {
         }
 
         triggers {
-            pollSCM('*/2 * * * *')
+            pollSCM('H/2 * * * *')
         }
 
         stages {
@@ -15,7 +15,8 @@ def call() {
             stage('label builds') {
                 steps {
                     script {
-                        addShortText background: 'white', borderColor: 'white', color: 'red', link: '', text: 'DEMO'
+                        def gitTag = GIT_BRANCH.split('/').last()
+                        addShortText background: 'white', borderColor: 'white', color: 'red', link: '', text: "${gitTag}"
                     }
                 }
             }

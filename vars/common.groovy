@@ -13,9 +13,9 @@ def publishArtifacts() {
 //    }
 
 }
-//
-//def prepareArtifacts() {
-//    println PROG_LANG
-//
-//
-//}
+
+def prepareArtifacts() {
+    println PROG_LANG
+
+
+}

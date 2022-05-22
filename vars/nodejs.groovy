@@ -11,7 +11,7 @@ def call() {
 //        }
 
         environment {
-            PROG_LANG == "nodejs"
+            PROG_LANG = "nodejs"
         }
 
         stages {

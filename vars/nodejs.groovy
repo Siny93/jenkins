@@ -10,9 +10,9 @@ def call() {
             pollSCM('H/2 * * * *')
         }
 
-        environment {
-            PROG_LANG = "nodejs"
-        }
+//        environment {
+//            PROG_LANG = "nodejs"
+//        }
 
         stages {
 

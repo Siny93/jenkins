@@ -12,6 +12,7 @@ def call() {
 
         environment {
             PROG_LANG = "nodejs"
+            VERSION = "6"
         }
 
         stages {

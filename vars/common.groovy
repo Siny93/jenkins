@@ -11,6 +11,9 @@ def publishArtifacts() {
 //    } else {
 //        Utils.markStageSkippedForConditional('publish Artifacts')
 //    }
+    sh '''
+      curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${gitTag}.zip http://nexus.roboshop.internal:8081/repository/${COMPONENT}-${gitTag}.zip
+    '''
 
 }
 

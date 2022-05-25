@@ -30,3 +30,17 @@ def prepareArtifacts() {
 
 
 }
+
+def prepareArtifacts() {
+    env.gitTag = GIT_BRANCH.split('/').last()
+    if(env.PROG_LANG == "java" && env.VERSION == "1.8") {
+        sh '''
+          mvn clean package
+          mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+          zip -r ${COMPONENT}-${gitTag}.zip ${COMPONENT}.jar
+
+        '''
+    }
+
+
+}

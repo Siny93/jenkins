@@ -6,8 +6,15 @@ def call() {
             label "${BUILD_LABEL}"
         }
 
-        triggers {
-            pollSCM('*/2 * * * *')
+//        triggers {
+//            pollSCM('H/2 * * * *')
+//
+//        }
+
+        environment {
+            PROG_LANG = "java"
+            VERSION = "1.8"
+            NEXUS = credentials('NEXUS')
         }
 
         stages {
@@ -23,9 +30,27 @@ def call() {
                 }
             }
 
+            stage('lint checks') {
+                steps {
+                    sh 'echo test cases'
+                }
+            }
+
             stage('test cases') {
                 steps {
                     sh 'echo test cases'
+                }
+            }
+
+            stage('publish artifacts') {
+                when {
+                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true']) }
+                }
+                steps {
+                    script {
+                        common.prepareArtifacts()
+                        common.publishArtifacts()
+                    }
                 }
             }
 

@@ -18,7 +18,6 @@ def publishArtifacts() {
 }
 
 def prepareArtifacts() {
-    env.gitTag = GIT_BRANCH.split('/').last()
     if(env.PROG_LANG == "nodejs" && env.VERSION == "6") {
         sh '''
           npm install
@@ -29,10 +28,6 @@ def prepareArtifacts() {
     }
 
 
-}
-
-def prepareArtifacts() {
-    env.gitTag = GIT_BRANCH.split('/').last()
     if(env.PROG_LANG == "java" && env.VERSION == "1.8") {
         sh '''
           mvn clean package

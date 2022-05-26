@@ -28,14 +28,14 @@ def prepareArtifacts() {
     }
 
 
-//    if(env.PROG_LANG == "java" && env.VERSION == "1.8") {
-//        sh '''
-//          mvn clean package
-//          mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
-//          zip -r ${COMPONENT}-${gitTag}.zip ${COMPONENT}.jar
-//
-//        '''
-//    }
+    if(env.PROG_LANG == "java" && env.VERSION == "1.8") {
+        sh '''
+          mvn clean package
+          mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+          zip -r ${COMPONENT}-${gitTag}.zip ${COMPONENT}.jar
+
+        '''
+    }
 //
 //    if(env.PROG_LANG == "python" && env.VERSION == "3") {
 //        sh '''

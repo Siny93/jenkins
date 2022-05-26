@@ -36,13 +36,13 @@ def prepareArtifacts() {
 
         '''
     }
-//
-//    if(env.PROG_LANG == "python" && env.VERSION == "3") {
-//        sh '''
-//          zip -r ${COMPONENT}-${gitTag}.zip requirements.txt *.py ${COMPONENT}.ini
-//
-//        '''
-//    }
+
+    if(env.PROG_LANG == "python" && env.VERSION == "3") {
+        sh '''
+          zip -r ${COMPONENT}-${gitTag}.zip requirements.txt *.py ${COMPONENT}.ini
+
+        '''
+    }
 //
 //    if(env.PROG_LANG == "golang" && env.VERSION == "1.15") {
 //        sh '''

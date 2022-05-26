@@ -44,5 +44,15 @@ def prepareArtifacts() {
         '''
     }
 
+    if(env.PROG_LANG == "golang" && env.VERSION == "1.15") {
+        sh '''
+          go mod init dispatch
+          go get 
+          go build
+          zip -r ${COMPONENT}-${gitTag}.zip ${COMPONENT}
+
+        '''
+    }
+
 
 }

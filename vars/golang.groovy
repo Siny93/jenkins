@@ -7,10 +7,26 @@ def call() {
         }
 
         triggers {
-            pollSCM('*/2 * * * *')
+            pollSCM('H/2 * * * *')
+        }
+
+        environment {
+            PROG_LANG = "golang"
+            VERSION = "1.15"
+            NEXUS = credentials('NEXUS')
         }
 
         stages {
+
+
+            stage('label builds') {
+                steps {
+                    script {
+                        env.gitTag = GIT_BRANCH.split('/').last()
+                        addShortText background: 'white', borderColor: 'white', color: 'red', link: '', text: "${gitTag}"
+                    }
+                }
+            }
 
             stage('check the code quality') {
                 steps {
@@ -32,13 +48,25 @@ def call() {
                 }
             }
 
+            stage('publish artifacts') {
+                when {
+                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true']) }
+                }
+                steps {
+                    script {
+                        common.prepareArtifacts()
+                        common.publishArtifacts()
+                    }
+                }
+            }
+
 
         }
 
 
         post {
             always {
-                cleanws()
+                cleanWs()
             }
         }
     }

@@ -28,7 +28,7 @@ def prepareArtifacts() {
     }
 
 
-    if(env.PROG_LANG == "java" && env.VERSION == "1.8") {
+    if (env.PROG_LANG == "java" && env.VERSION == "1.8") {
         sh '''
           mvn clean package
           mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
@@ -37,30 +37,10 @@ def prepareArtifacts() {
         '''
     }
 
-    if(env.PROG_LANG == "python" && env.VERSION == "3") {
+    if (env.PROG_LANG == "python" && env.VERSION == "3") {
         sh '''
           zip -r ${COMPONENT}-${gitTag}.zip requirements.txt *.py ${COMPONENT}.ini
 
         '''
     }
-//
-//    if(env.PROG_LANG == "golang" && env.VERSION == "1.15") {
-//        sh '''
-//          go mod init dispatch
-//          go get
-//          go build
-//          zip -r ${COMPONENT}-${gitTag}.zip ${COMPONENT}
-//
-//        '''
-//    }
-//
-//    if(env.PROG_LANG == "angular") {
-//        sh '''
-//          cd static
-//          zip -r ../${COMPONENT}-${gitTag}.zip ${COMPONENT}
-//
-//        '''
-//    }
-//
-//
 }

@@ -30,11 +30,11 @@ def call() {
             }
 
 
-//            stage('compile the code') {
-//                steps {
-//                    sh 'mvn compile'
-//                }
-//            }
+            stage('compile the code') {
+                steps {
+                    sh 'mvn compile'
+                }
+            }
 
 
             stage('check the code quality') {

@@ -8,7 +8,7 @@ def call() {
 
 
 
-        environment {}
+        //environment {}
 
         parameters {
 
@@ -40,6 +40,8 @@ def call() {
                     '''
                 }
             }
+
+        }
 
 
 

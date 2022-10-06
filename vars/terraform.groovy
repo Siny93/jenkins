@@ -10,6 +10,10 @@ def call() {
 
         //environment {}
 
+        options {
+            ansiColor('xterm')
+        }
+
         parameters {
 
 

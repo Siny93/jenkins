@@ -16,7 +16,7 @@ git branch: 'main', url: 'https://github.com/Siny93/${COMPONENT}.git'
 }
 }
 
-}
+
 
 stage('Terraform apply') {
 steps {
@@ -33,6 +33,6 @@ sh '''
 }
 }
 
-
+}
 
 }

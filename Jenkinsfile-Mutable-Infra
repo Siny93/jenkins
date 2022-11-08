@@ -24,6 +24,7 @@ dir('code') {
 
 
                     sh '''
+                      cd terraform-mutable
                       terraform init -backend-config=env/${ENVIRONMENT}-backend.tfvars
                       terraform ${Action} -auto-approve -var-file=env/${ENVIRONMENT}.tfvars
                     '''

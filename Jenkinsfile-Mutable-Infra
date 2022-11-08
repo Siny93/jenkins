@@ -22,13 +22,12 @@ stage('Terraform apply') {
 steps {
 dir('code') {
 
-sh '''
-  cd terraform-mutable
-  terraform init -backend-config=env/${Env}-backend.tfvars
-  terraform apply -auto-approve -var-file=env/${Env}.tfvars
 
+                    sh '''
+                      terraform init -backend-config=env/${Env}-backend.tfvars
+                      terraform ${Action} -auto-approve -var-file=env/${Env}.tfvars
+                    '''
 
-'''
 }
 }
 }

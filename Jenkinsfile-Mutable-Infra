@@ -3,7 +3,7 @@ agent {
 label 'WORKSTATION'
 }
 parameters {
-      choice(name: 'ENV', choices: ['', 'dev', 'prod'], description: 'Choose Env')
+      choice(name: 'Env', choices: ['', 'dev', 'prod'], description: 'Choose Env')
       string(name: 'COMPONENT', defaultValue: '', description: 'Which component')
 }
 stages {
@@ -24,8 +24,8 @@ dir('code') {
 
 sh '''
   cd terraform-mutable
-  terraform init -backend-config=env/${ENV}-backend.tfvars
-  terraform apply -auto-approve -var-file=env/${ENV}.tfvars
+  terraform init -backend-config=env/${Env}-backend.tfvars
+  terraform apply -auto-approve -var-file=env/${Env}.tfvars
 
 
 '''

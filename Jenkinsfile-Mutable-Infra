@@ -11,7 +11,7 @@ stage('Get Git Repo') {
 steps {
 dir('code') {
 
-git branch: 'main', url: 'https://github.com/Siny93/${COMPONENT}.git'
+git branch: 'main', url: "https://github.com/Siny93/${COMPONENT}.git"
 }
 }
 }

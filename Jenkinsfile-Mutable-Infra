@@ -9,6 +9,7 @@ options {
 parameters {
       choice(name: 'ENVIRONMENT', choices: ['', 'dev', 'prod'], description: 'Choose Env')
       string(name: 'COMPONENT', defaultValue: '', description: 'Which component')
+      string(name: 'APP_VERSION', defaultValue: '', description: 'Which App Versionf')
 }
 stages {
 stage('Get Git Repo') {

@@ -40,4 +40,10 @@ dir('code') {
 
 }
 
+post {
+always {
+cleanWs()
+}
+}
+
 }

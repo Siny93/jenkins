@@ -40,7 +40,7 @@ terraform apply -auto-approve -var-file=env/${ENV}.tfvars
 '''
 }
 }
-
+}
 
 stage('ALB') {
 steps {
@@ -62,7 +62,7 @@ terraform apply -auto-approve -var-file=env/${ENV}.tfvars
 
 }
 
-}
+
 
 stage('BACKEND') {
 parallel {

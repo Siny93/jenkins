@@ -1,26 +1,22 @@
 def call() {
-
-
     pipeline {
         agent {
             label "${BUILD_LABEL}"
         }
 
-//        triggers {
-//            pollSCM('H/2 * * * *')
-//
-//        }
+//    triggers {
+//      pollSCM('H/2 * * * *')
+//    }
 
         environment {
-            PROG_LANG = "angular"
-            VERSION = ""
+            PROG_LANG_NAME = "angular"
+            PROG_LANG_VERSION = ""
             NEXUS = credentials('NEXUS')
         }
 
         stages {
 
-
-            stage('label builds') {
+            stage('Label Builds') {
                 steps {
                     script {
                         env.gitTag = GIT_BRANCH.split('/').last()
@@ -29,15 +25,7 @@ def call() {
                 }
             }
 
-
-            stage('compile the code') {
-                steps {
-                    sh 'mvn compile'
-                }
-            }
-
-
-            stage('check the code quality') {
+            stage('Check the Code Quality') {
                 steps {
                     script {
                         common.sonarQube()
@@ -45,21 +33,21 @@ def call() {
                 }
             }
 
-            stage('lint checks') {
+            stage('Lint Checks') {
                 steps {
-                    sh 'echo test cases'
+                    sh 'echo Test Cases'
                 }
             }
 
-            stage('test cases') {
+            stage('Test Cases') {
                 steps {
-                    sh 'echo test cases'
+                    sh 'echo Test Cases'
                 }
             }
 
-            stage('publish artifacts') {
+            stage('Publish Artifacts') {
                 when {
-                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true']) }
+                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) }
                 }
                 steps {
                     script {
@@ -69,14 +57,12 @@ def call() {
                 }
             }
 
-
         }
 
         post {
             always {
                 cleanWs()
             }
-
         }
 
     }
